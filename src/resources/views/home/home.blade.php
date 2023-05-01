@@ -1,6 +1,6 @@
 @extends('master')
 @section('title', 'Page Title')
-@section('sidebar')
+@section('sidenav')
     <p>This refers to the master sidebar.</p>
 @endsection
 @section('content')

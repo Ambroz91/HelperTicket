@@ -12,4 +12,4 @@
 {{--<link rel="stylesheet" type="text/css" href="{{ asset('resources/css/app.css') }}">--}}
 
 {{--<link href ="{{asset('css/app.css')}}" rel="stylesheet">--}}
-{{--@vite('resources/css/app.css')--}}
+@vite('resources/css/app.css')
