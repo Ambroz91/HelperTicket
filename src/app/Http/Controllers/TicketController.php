@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TicketResource;
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -13,7 +16,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        return view('ticket.index', ['tickets' => TicketResource::collection(Ticket::all()->where('user_id', Auth::user()->getAuthIdentifier()))]);
     }
 
     /**
@@ -29,7 +32,8 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        $ticket = Ticket::create($request->validated());
+        return TicketResource::make($ticket);
     }
 
     /**

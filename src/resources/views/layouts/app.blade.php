@@ -30,7 +30,7 @@
     @endif
 
     <!-- Page Content -->
-    <main>
+    <main class="container max-w-7xl mx-auto">
             @yield('mainContent')
     </main>
 </div>
