@@ -5,11 +5,18 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property User
+ * @property Replies
+ */
 class Ticket extends Model
 {
     use HasFactory;
     use Sluggable;
+
     protected $fillable = [
         'title',
         'description',
@@ -18,15 +25,23 @@ class Ticket extends Model
         'user_id',
         'repliadble'
     ];
-    public function user(){
-        $this->belongsTo(User::class);
+
+    public function ticketUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
+
+    public function ticketReply(): HasMany
+    {
+        return $this->hasMany(Replies::class);
+    }
+
     public function sluggable(): array
     {
         return [
-          'slug' => [
-              'source' => 'title'
-          ]
+            'slug' => [
+                'source' => 'title'
+            ]
         ];
     }
 
@@ -34,7 +49,7 @@ class Ticket extends Model
     {
         parent::boot();
 
-        self::creating(function ($model){
+        self::creating(function ($model) {
             $model->user_id = auth()->id();
         });
     }

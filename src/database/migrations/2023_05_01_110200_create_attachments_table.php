@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
             $table->string('attachment_location');
+            $table->foreignId('ticket')->nullable()->constrained();
+            $table->foreignId('reply_id')->nullable()->constrained('replies');
             $table->timestamps();
         });
     }
