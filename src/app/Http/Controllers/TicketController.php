@@ -16,7 +16,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('ticket.index', ['tickets' => TicketResource::collection(Ticket::all()->where('user_id', Auth::user()->getAuthIdentifier()))]);
+        $tickets = TicketResource::collection(Ticket::all()->where('user_id', Auth::user()->getAuthIdentifier()));
+        return view('ticket.index', compact('tickets'));
     }
 
     /**

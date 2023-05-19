@@ -1,12 +1,11 @@
-
-<div class="fixed left-0 h-screen w-16 m-0
+<div class="fixed left-0 h-screen w-auto m-0 px-5
                     flex flex-col
-                    text-white shadow-lg text-center bg-red-500">
-    <i>A</i>
-    <i>B</i>
-    <i>C</i>
-    <i>D</i>
-    <i>E</i>
-    <i>F</i>
-    <i>G</i>
+                    text-white shadow-lg text-center bg-gray-600">
+    <i>HTML</i>
+    <i>PHP</i>
+    <i>JS</i>
+    <i>CSS</i>
+    <i>TAILWIND</i>
+    <i>JQUERY</i>
+    <i>PYTHON</i>
 </div>
