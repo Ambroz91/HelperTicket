@@ -19,8 +19,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('status')->default(TicketStatus::OPEN->value);
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('reply_id')->nullable()->constrained('replies');
-            $table->foreignId('attachment_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
