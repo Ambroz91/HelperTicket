@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-})->name('home');
+//Route::get('/', function () {
+//    return view('layouts.app', [MainPageController::class]);
+//})->name('home');
+
+Route::get('/', [MainPageController::class, 'index'])->name('home.index');
+Route::get('/ticket/{slug}', [MainPageController::class, 'show'])->name('home.show');
 
 //Route::get('/dashboard', function () {
 //    return view('layouts.dashboard');
@@ -27,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('/dashboard/ticket', \App\Http\Controllers\TicketController::class);
+    Route::resource('/ticket', TicketController::class);
+    Route::resource('/reply', ReplyController::class);
 });
 
 require __DIR__.'/auth.php';

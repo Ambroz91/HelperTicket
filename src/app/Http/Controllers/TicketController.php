@@ -16,7 +16,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('ticket.index', ['tickets' => TicketResource::collection(Ticket::all()->where('user_id', Auth::user()->getAuthIdentifier()))]);
+        $tickets = TicketResource::collection(Ticket::all()->where('user_id', Auth::user()->getAuthIdentifier()));
+        return view('ticket.index', compact('tickets'));
     }
 
     /**
@@ -39,9 +40,13 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket)
+    public function show(string $slug)
     {
-        //
+        $ticketData = TicketResource::collection(Ticket::all()->where('slug', $slug));
+        $ticket = $ticketData->resource;
+
+        $replyData='test';
+        return view('home.show', compact('ticket'), $replyData);
     }
 
     /**

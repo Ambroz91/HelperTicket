@@ -17,7 +17,7 @@
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     @include('layouts.navigation')
-    @if(Route::is('home'))
+    @if(in_array(Route::current()->getName(), ['home.index', 'login', 'home.show']))
         @include('navigation/sidenav')
     @endif
     <!-- Page Heading -->
@@ -31,7 +31,7 @@
 
     <!-- Page Content -->
     <main class="container max-w-7xl mx-auto">
-            @yield('mainContent')
+        @yield('mainContent')
     </main>
 </div>
 </body>

@@ -23,6 +23,7 @@ class Ticket extends Model
         'attachment',
         'status',
         'user_id',
+        'repliadble'
     ];
 
     public function ticketUser(): BelongsTo
@@ -51,5 +52,10 @@ class Ticket extends Model
         self::creating(function ($model) {
             $model->user_id = auth()->id();
         });
+    }
+
+    public function allReplies()
+    {
+        return $this->morphMany(Replies::class, 'repliadble');
     }
 }
