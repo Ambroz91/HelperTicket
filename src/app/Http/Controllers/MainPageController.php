@@ -22,7 +22,9 @@ class MainPageController extends Controller
      */
     public function show(string $slug)
     {
-        return view('ticket.show');
+        $ticketData = TicketResource::collection(Ticket::all()->where('slug', $slug));
+        $ticket = $ticketData->resource;
+        return view('home.show', compact('ticket'));
     }
 
 }

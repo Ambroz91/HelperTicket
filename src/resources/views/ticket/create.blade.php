@@ -15,19 +15,6 @@
                     <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" placeholder="Title"/>
                     <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                 </div>
-
-                <!-- Password -->
-{{--                <div class="mt-4">--}}
-{{--                    <x-input-label for="password" :value="__('Password')"/>--}}
-
-{{--                    <x-text-input id="password" class="block mt-1 w-full"--}}
-{{--                                  type="password"--}}
-{{--                                  name="password"--}}
-{{--                                  required autocomplete="current-password"/>--}}
-
-{{--                    <x-input-error :messages="$errors->get('password')" class="mt-2"/>--}}
-{{--                </div>--}}
-
                 <div class="mt-4">
                     <x-textarea class="h-96 block mt-1 w-full" name="description" placeholder="Ticket Body"/>
                     <x-input-error :messages="$errors->get('description')" class="mt-2"/>
