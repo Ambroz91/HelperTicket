@@ -2,21 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReplyResource;
 use App\Models\Replies;
 use App\Http\Requests\StoreReplyRequest;
 use App\Http\Requests\UpdateReplyRequest;
+use App\Models\Ticket;
 
 class ReplyController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReplyRequest $request)
+    public function store(StoreReplyRequest $request, Ticket $ticket)
     {
-        dd('test');
-        $reply = Replies::create($request->validated());
-        dd($reply);
-//        return TicketResource::make($ticket);
+        $replyData = $request->validated();
+        $replyData['ticket_id'] = $ticket->id;
+        $replyData['user_id'] = auth()->id();
+
+//        dd($replyData);
+        $reply = Replies::create($replyData);
+//        $reply = Replies::create($request->validated());
+
+        return ReplyResource::make($reply);
     }
 
     /**

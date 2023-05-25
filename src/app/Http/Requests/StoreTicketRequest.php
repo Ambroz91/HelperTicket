@@ -24,8 +24,10 @@ class StoreTicketRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
+            'slug' => ['string'],
             'attachment' => ['sometimes','file', 'mimes:jpg,jpeg,png,pdf'],
-            'user_id' => ['required', 'numeric']
+            'status' => ['string'],
+            'user_id' => ['numeric']
         ];
     }
 }

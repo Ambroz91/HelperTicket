@@ -24,7 +24,8 @@ class StoreReplyRequest extends FormRequest
         return [
             'replyText' => ['required', 'string'],
             'attachment' => ['sometimes','file', 'mimes:jpg,jpeg,png,pdf'],
-            'ticket_id' => ['required', 'numeric']
+            'ticket_id' => ['numeric'],
+            'user_id' => ['numeric']
         ];
     }
 }

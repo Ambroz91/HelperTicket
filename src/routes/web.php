@@ -21,20 +21,27 @@ use Illuminate\Support\Facades\Route;
 //    return view('layouts.app', [MainPageController::class]);
 //})->name('home');
 
-Route::get('/', [MainPageController::class, 'index'])->name('home.index');
-Route::get('/ticket/{slug}', [MainPageController::class, 'show'])->name('home.show');
-
 //Route::get('/dashboard', function () {
 //    return view('layouts.dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/', [MainPageController::class, 'index'])->name('home.index');
+//Route::get('/singleticket/', [MainPageController::class, 'show'])->name('home.show')->parameters(['ticket' => 'ticket:slug']);
+//Route::resource('/ticket', TicketController::class)->parameters(['ticket' => 'ticket:slug']);
+
+//Route::get('/ticket/{ticket:slug}/', [TicketController::class, 'show'])->name('guest.ticket.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('/ticket', TicketController::class);
-    Route::resource('/reply', ReplyController::class);
+//    Route::resource('/ticket', TicketController::class);
+    Route::resource('/ticket', TicketController::class)->parameters(['ticket' => 'ticket:slug']);
+
+    Route::prefix('/ticket/{ticket:slug}')->group(function () {
+        Route::resource('/reply', ReplyController::class);
+    });
 });
 
 require __DIR__.'/auth.php';

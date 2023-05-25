@@ -40,13 +40,14 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    public function show(Ticket $ticket)
     {
-        $ticketData = TicketResource::collection(Ticket::all()->where('slug', $slug));
+//        dd($ticket->id);
+        $ticketData = TicketResource::collection(Ticket::all()->where('id', $ticket->id));
         $ticket = $ticketData->resource;
-
-        $replyData='test';
-        return view('home.show', compact('ticket'), $replyData);
+//
+//        $replyData='test';
+        return view('ticket.show', compact('ticket'));
     }
 
     /**

@@ -53,9 +53,4 @@ class Ticket extends Model
             $model->user_id = auth()->id();
         });
     }
-
-    public function allReplies()
-    {
-        return $this->morphMany(Replies::class, 'repliadble');
-    }
 }
