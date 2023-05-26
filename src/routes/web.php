@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReplyController;
@@ -21,11 +22,6 @@ use Illuminate\Support\Facades\Route;
 //    return view('layouts.app', [MainPageController::class]);
 //})->name('home');
 
-//Route::get('/dashboard', function () {
-//    return view('layouts.dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/', [MainPageController::class, 'index'])->name('home.index');
 //Route::get('/singleticket/', [MainPageController::class, 'show'])->name('home.show')->parameters(['ticket' => 'ticket:slug']);
 //Route::resource('/ticket', TicketController::class)->parameters(['ticket' => 'ticket:slug']);
 
@@ -36,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-//    Route::resource('/ticket', TicketController::class);
+    Route::get('/', [TicketController::class, 'index']);
     Route::resource('/ticket', TicketController::class)->parameters(['ticket' => 'ticket:slug']);
 
     Route::prefix('/ticket/{ticket:slug}')->group(function () {

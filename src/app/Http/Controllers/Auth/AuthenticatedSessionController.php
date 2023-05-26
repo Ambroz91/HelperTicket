@@ -42,6 +42,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+        if(file_exists(config_path().'/ENABLE_INSTALL_TOOL'))
+        {
+            unlink(config_path().'/ENABLE_INSTALL_TOOL');
+        }
 
         return redirect('/');
     }

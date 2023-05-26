@@ -15,21 +15,27 @@ class MainPageController extends Controller
      */
     public function index()
     {
-        $tickets = TicketResource::collection(Ticket::all());
-        return view('home.main', compact('tickets'));
+//        dd(file_exists(config_path().'/ENABLE_INSTALL_TOOL'));
+//        if(file_exists(config_path().'/ENABLE_INSTALL_TOOL'))
+//        {
+//            echo 'Hello World';
+//            unlink(config_path().'/ENABLE_INSTALL_TOOL');
+//        }
+//        $tickets = TicketResource::collection(Ticket::all());
+        return view('auth.login');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ticket $ticket)
-    {
-        dd($ticket);
-        $ticket = TicketResource::collection(Ticket::all()->where('slug', $slug));
-
-//        $replyData = ReplyResource::collection(Replies::all()->where('ticket_id', $ticketData->resource[0]->resource->id )->join('',''));
-//        $ticket = $ticketData->resource;
-        return view('home.show', compact('ticket'));
-    }
+//    /**
+//     * Display the specified resource.
+//     */
+//    public function show(Ticket $ticket)
+//    {
+//        dd($ticket);
+//        $ticket = TicketResource::collection(Ticket::all()->where('slug', $slug));
+//
+////        $replyData = ReplyResource::collection(Replies::all()->where('ticket_id', $ticketData->resource[0]->resource->id )->join('',''));
+////        $ticket = $ticketData->resource;
+//        return view('home.show', compact('ticket'));
+//    }
 
 }
