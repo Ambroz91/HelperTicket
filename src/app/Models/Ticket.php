@@ -23,7 +23,7 @@ class Ticket extends Model
         'attachment',
         'status',
         'user_id',
-        'repliadble'
+        'category_id'
     ];
 
     public function ticketUser(): BelongsTo
@@ -34,6 +34,11 @@ class Ticket extends Model
     public function ticketReply(): HasMany
     {
         return $this->hasMany(Replies::class);
+    }
+
+    public function ticketCategory(): BelongsTo
+    {
+        return $this->belongsTo(Categories::class);
     }
 
     public function sluggable(): array

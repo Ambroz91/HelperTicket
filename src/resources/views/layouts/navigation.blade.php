@@ -13,18 +13,18 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex items-center">
                     @auth
-                    <x-nav-link :href="route('ticket.index')" :active="request()->routeIs('dashboard')">
-                        {{ __('My Tickets') }}
-                    </x-nav-link>
+                        <x-nav-link :href="route('ticket.index')" :active="request()->routeIs('dashboard')">
+                            {{ __('My Tickets') }}
+                        </x-nav-link>
                         <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">
                             {{ __('Open Ticket') }}
                         </x-nav-link>
+                    @if(auth()->user()->role === 'admin'))
+                            <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">
+                                {{ __('Categories') }}
+                            </x-nav-link>
+                        @endif
                     @endauth
-                    @guest
-                        <x-nav-link>
-                            @include('navigation/nav')
-                        </x-nav-link>
-                    @endguest
                 </div>
             </div>
             @auth

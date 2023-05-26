@@ -17,9 +17,9 @@
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     @include('layouts.navigation')
-    @if(in_array(Route::current()->getName(), ['home.index', 'login', 'home.show']))
-        @include('navigation/sidenav')
-    @endif
+{{--    @if(in_array(Route::current()->getName(), ['home.index', 'login', 'home.show']))--}}
+{{--        @include('navigation/sidenav')--}}
+{{--    @endif--}}
     <!-- Page Heading -->
     @if (isset($header))
         <header class="bg-white dark:bg-gray-800 shadow">
