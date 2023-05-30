@@ -23,6 +23,7 @@ class StoreCategoriesRequest extends FormRequest
     {
         return [
             'category' => ['required', 'string', 'max:255'],
+            'slug' => ['string'],
         ];
     }
 }

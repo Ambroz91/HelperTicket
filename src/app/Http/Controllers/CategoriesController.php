@@ -25,7 +25,8 @@ class CategoriesController extends Controller
     {
         $category = Category::create($request->validated());
         CategoryResource::make($category);
-        return view('category.create');
+
+        return redirect('category/create');
     }
 
     /**
@@ -39,9 +40,12 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriesRequest $request, Category $categories)
+    public function update(UpdateCategoriesRequest $request, Category $category)
     {
-        //
+        $category->update($request->validated());
+        CategoryResource::make($category);
+
+        return redirect('category/create');
     }
 
     /**

@@ -33,10 +33,10 @@
                 class="flex justify-between h-16 bg-white px-6 py-4 dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg mb-5">
                 <div class="align-middle">{{$category->category}}</div>
                 <div>
-                    <a href="{{ route('category.edit',[$category->id]) }}"
+                    <a href="{{ route('category.edit',[$category->slug]) }}"
                        class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Edit</a>
-                    <a href="{{ route('category.destroy',[$category->category]) }}"
-                       class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">Close</a>
+                    <a href="{{ route('category.destroy',[$category->slug]) }}"
+                       class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">Delete</a>
                 </div>
             </div>
         @endforeach
