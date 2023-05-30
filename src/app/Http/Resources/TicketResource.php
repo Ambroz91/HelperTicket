@@ -22,6 +22,7 @@ class TicketResource extends JsonResource
             'attachment' => $this->attachment,
             'status' => $this->status,
             'user_id' => $this->user_id,
+            'category_id' => $this->category_id,
         ];
     }
 }

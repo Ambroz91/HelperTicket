@@ -21,7 +21,7 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoriesRequest $request)
+    public function store(StoreCategoriesRequest $request, Category $category)
     {
         $category = Category::create($request->validated());
         CategoryResource::make($category);
@@ -45,7 +45,7 @@ class CategoriesController extends Controller
         $category->update($request->validated());
         CategoryResource::make($category);
 
-        return redirect('category/create');
+        return redirect()->route('category.create');
     }
 
     /**
