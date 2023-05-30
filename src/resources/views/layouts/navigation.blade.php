@@ -24,6 +24,12 @@
                                 {{ __('Categories') }}
                             </x-nav-link>
                         @endif
+                        @if(file_exists(config_path().'/ENABLE_INSTALL_TOOL'))
+{{--                        <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">--}}
+                        <x-nav-link>
+                            {{ __('Categories') }}
+                        </x-nav-link>
+                        @endif
                     @endauth
                 </div>
             </div>
