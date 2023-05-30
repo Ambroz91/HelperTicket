@@ -27,7 +27,8 @@ class StoreTicketRequest extends FormRequest
             'slug' => ['string'],
             'attachment' => ['sometimes','file', 'mimes:jpg,jpeg,png,pdf'],
             'status' => ['string'],
-            'user_id' => ['numeric']
+            'user_id' => ['numeric'],
+            'category_id' => ['numeric']
         ];
     }
 }

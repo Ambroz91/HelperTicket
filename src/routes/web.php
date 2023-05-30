@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReplyController;
@@ -35,9 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [TicketController::class, 'index']);
     Route::resource('/ticket', TicketController::class)->parameters(['ticket' => 'ticket:slug']);
 
-    Route::prefix('/ticket/{ticket:slug}')->group(function () {
-        Route::resource('/reply', ReplyController::class);
-    });
+//    Route::prefix('/ticket/{ticket:slug}')->group(function () {
+//        Route::resource('/reply', ReplyController::class);
+//    });
+
+    Route::resource('/category', CategoriesController::class)->parameters(['category' => 'category:slug']);
 });
 
 require __DIR__.'/auth.php';

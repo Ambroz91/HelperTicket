@@ -16,6 +16,15 @@
                     <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                 </div>
                 <div class="mt-4">
+                    <select name="category_id">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" @selected(old('category') == $category->category)>
+                                {{ $category->category }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mt-4">
                     <x-textarea class="h-96 block mt-1 w-full" name="description" placeholder="Ticket Body"/>
                     <x-input-error :messages="$errors->get('description')" class="mt-2"/>
                 </div>

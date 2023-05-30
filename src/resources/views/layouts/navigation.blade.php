@@ -19,15 +19,15 @@
                         <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">
                             {{ __('Open Ticket') }}
                         </x-nav-link>
-                    @if(auth()->user()->role === 'admin'))
-                            <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">
-                                {{ __('Categories') }}
+                    @if(auth()->user()->role === 'admin')
+                            <x-nav-link :href="route('category.create')" :active="request()->routeIs('category.create')">
+                                {{ __('Category') }}
                             </x-nav-link>
                         @endif
                         @if(file_exists(config_path().'/ENABLE_INSTALL_TOOL'))
 {{--                        <x-nav-link :href="route('ticket.create')" :active="request()->routeIs('ticket.create')">--}}
                         <x-nav-link>
-                            {{ __('Categories') }}
+                            {{ __('Category') }}
                         </x-nav-link>
                         @endif
                     @endauth
