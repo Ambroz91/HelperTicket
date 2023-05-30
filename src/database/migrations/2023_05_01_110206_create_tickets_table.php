@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->string('status')->default(TicketStatus::OPEN->value);
+            $table->string('status')->default(TicketStatus::NEW->value);
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
