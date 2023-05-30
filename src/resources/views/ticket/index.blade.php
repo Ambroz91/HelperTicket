@@ -17,8 +17,8 @@
                 @endif
                 @auth
                     <div class="py-3">
-                    <a href="{{ route('ticket.edit',[$ticket->id]) }}" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Edit</a>
-                    <a href="{{ route('ticket.destroy',[$ticket->id]) }}" class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">Close</a>
+                    <a href="{{ route('ticket.edit',[$ticket->slug]) }}" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Edit</a>
+                    <a href="{{ route('ticket.destroy',[$ticket->slug]) }}" class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded">Close</a>
                     </div>
                 @endauth
             </div>

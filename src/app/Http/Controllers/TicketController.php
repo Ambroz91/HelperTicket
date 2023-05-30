@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\TicketResource;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
@@ -27,7 +27,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        $categories = CategoryResource::collection(Categories::all());
+        $categories = CategoryResource::collection(Category::all());
         return view('ticket.create', compact('categories'));
     }
 
@@ -58,6 +58,7 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
+        dd($ticket);
         //
     }
 

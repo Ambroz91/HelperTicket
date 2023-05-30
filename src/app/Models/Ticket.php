@@ -38,7 +38,7 @@ class Ticket extends Model
 
     public function ticketCategory(): BelongsTo
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function sluggable(): array
