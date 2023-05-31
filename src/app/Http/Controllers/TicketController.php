@@ -19,15 +19,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-//        $tickets = TicketResource::collection(Ticket::all()->where('user_id', Auth::user()->getAuthIdentifier())->join('',''));
-        $tickets = Ticket::query()
-//            ->where('user_id', '=', Auth::id())
-            ->join(
-                'categories',
-                'categories.id',
-                '=',
-                'tickets.category_id'
-            )->paginate();
+        $tickets = Ticket::query()->with(['category', 'user'])->get();
         return view('ticket.index', compact('tickets'));
     }
 
@@ -54,10 +46,10 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        $ticketData = TicketResource::collection(Ticket::all()->where('id', $ticket->id));
-        $ticket = $ticketData->resource;
+//        ładowanie wielu relacji do zapytania
+        $ticketData = Ticket::query()->with(['category', 'user'])->where('id', $ticket->id)->get();
 
-        return view('ticket.show', compact('ticket'));
+        return view('ticket.show', compact('ticketData'));
     }
 
     /**

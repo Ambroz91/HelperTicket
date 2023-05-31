@@ -14,19 +14,17 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories = CategoryResource::collection(Category::all());
+        $categories = Category::all();
         return view('category.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoriesRequest $request, Category $category)
+    public function store(StoreCategoriesRequest $request)
     {
-        $category = Category::create($request->validated());
-        CategoryResource::make($category);
-
-        return redirect('category/create');
+        Category::create($request->validated());
+        return redirect()->route('category.create');
     }
 
     /**
@@ -43,8 +41,6 @@ class CategoriesController extends Controller
     public function update(UpdateCategoriesRequest $request, Category $category)
     {
         $category->update($request->validated());
-        CategoryResource::make($category);
-
         return redirect()->route('category.create');
     }
 

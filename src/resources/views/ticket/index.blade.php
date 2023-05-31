@@ -8,7 +8,10 @@
                 <div>{{\Illuminate\Support\Str::limit($ticket->description,150)}}</div>
                 <div>{{$ticket->created_at->diffForHumans()}}</div>
                 <div>{{strtoupper($ticket->status)}}</div>
-                <div>{{strtoupper($ticket->category)}}</div>
+                @if($ticket->category)
+                    <div>{{strtoupper($ticket->category->category)}}</div>
+                @endif
+                <div>{{strtoupper($ticket->user->name)}}</div>
                 @auth
                     <div class="py-3">
                         <a href="{{ route('ticket.edit',[$ticket->slug]) }}"

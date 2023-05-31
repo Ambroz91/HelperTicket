@@ -16,7 +16,7 @@ class Category extends Model
         'category'
     ];
 
-    public function categoryTicket(): HasMany
+    public function ticket(): HasMany
     {
         return $this->hasMany(Ticket::class);
     }
@@ -24,7 +24,7 @@ class Category extends Model
     public function sluggable(): array
     {
         return [
-            'slug' => [
+            'category_slug' => [
                 'source' => 'category',
                 'onUpdate' => true,
             ]

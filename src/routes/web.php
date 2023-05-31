@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
