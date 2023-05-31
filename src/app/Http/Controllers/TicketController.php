@@ -8,9 +8,6 @@ use App\Models\Category;
 use App\Models\Ticket;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -19,8 +16,37 @@ class TicketController extends Controller
      */
     public function index()
     {
+        $ticketLow = [];
+        $ticketMedium = [];
+        $ticketHigh = [];
+        $ticketUrgent = [];
+
         $tickets = Ticket::query()->with(['category', 'user'])->get();
-        return view('ticket.index', compact('tickets'));
+        foreach ($tickets as $ticket){
+            switch ($ticket->priority){
+                case 'low':
+                    $ticketLow[] = $ticket;
+                    break;
+                case 'medium':
+                    $ticketMedium[] = $ticket;
+                    break;
+                case 'high':
+                    $ticketHigh[] = $ticket;
+                    break;
+                case 'urgent':
+                    $ticketUrgent[] = $ticket;
+                    break;
+            }
+        }
+
+        $allTickets =[
+            'urgent'=> $ticketUrgent,
+            'high'=> $ticketHigh,
+            'medium'=> $ticketMedium,
+            'low'=> $ticketLow,
+        ];
+
+        return view('ticket.index', compact('allTickets'));
     }
 
     /**
