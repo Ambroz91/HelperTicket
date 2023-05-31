@@ -14,13 +14,8 @@ class Attachments extends Model
 {
     use HasFactory;
 
-    public function attachmentTicket(): BelongsTo
+    public function ticket(): BelongsTo
     {
         return $this->belongsTo(Ticket::class);
-    }
-
-    public function attachmentReplies(): BelongsTo
-    {
-        return $this->belongsTo(Replies::class);
     }
 }

@@ -27,12 +27,12 @@ class Ticket extends Model
         'priority'
     ];
 
-    public function ticketUser(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function ticketCategory(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
